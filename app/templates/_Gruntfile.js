@@ -17,6 +17,7 @@ module.exports = function(grunt) {
         },
         bower_concat: {
             dist: {
+                exclude: ['jquery'],
                 dest: 'build/lib.js'
             }
         },
