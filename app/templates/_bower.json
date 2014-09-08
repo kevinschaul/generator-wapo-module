@@ -1,0 +1,17 @@
+{
+  "name": "<%= slug %>",
+  "version": "0.0.0",
+  "homepage": "https://github.com/WPMedia/postgraphics",
+  "main": "src/<%= slug %>.js",
+  "moduleType": [
+    "globals"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

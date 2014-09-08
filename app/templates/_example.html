@@ -1,0 +1,33 @@
+<!-- This code probably already exists in your template. -->
+<script>
+var TWP = {};
+</script>
+<script type="text/javascript" src="http://js.washingtonpost.com/wp-srv/graphics/js/twp.util.js"></script>
+<script src='../bower_components/jquery/dist/jquery.min.js'></script>
+<script type="text/javascript" src="http://js.washingtonpost.com/wp-srv/graphics/js/twp.module.datatable.js"></script>
+
+<!-- TODO Add any packaged scripts here -->
+<!-- This script is supplied in the distributed versions of <%= slug %> -->
+<script src='../bower_components/tablesorter/jquery.tablesorter.min.js'></script>
+
+
+<!-- TODO Update this with working example code -->
+<!-- <%= name %> user code follows -->
+<link rel="stylesheet" href="../src/<%= slug %>.css" charset="utf-8">
+
+<table id="my-table" class="data-table"></table>
+
+<script type="text/javascript" src="../src/<%= slug %>.js"></script>
+<script>
+$(document).ready(function() {
+
+    TWP.Module.DataTable({
+        container: 'my-table',
+        cache: true,
+        gdoc_id: '0Ar3tE0gJ38POdDlRTC1Fd0g2Y2EwdWtWcV9qbGQxNkE',
+        sortable: true
+    });
+
+});
+</script>
+
