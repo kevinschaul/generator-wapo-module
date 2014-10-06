@@ -1,6 +1,6 @@
 {
   "name": "generator-wapo-module",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A module generator for Yeoman, specific to the Washington Post",
   "keywords": [
     "yeoman-generator"
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "underscore": "~1.5.2",
+    "update-notifier": "^0.2.2",
     "yeoman-generator": "^0.16.0",
     "yosay": "^0.3.0"
   },

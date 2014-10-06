@@ -3,10 +3,17 @@
 var _ = require('underscore');
 var exec = require('child_process').exec;
 var fs = require('fs');
+var updateNotifier = require('update-notifier');
 var util = require('util');
 var path = require('path');
+var pkg = require('../package.json');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
+
+updateNotifier({
+    packageName: pkg.name,
+    packageVersion: pkg.version
+}).notify();
 
 module.exports = yeoman.generators.Base.extend({
     constructor: function() {
