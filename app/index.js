@@ -33,8 +33,10 @@ module.exports = yeoman.generators.Base.extend({
             name: 'slug',
             message: 'What is the module slug?',
             validate: function(input) {
-                if (!input) {
-                    return 'The slug cannot be empty.'
+                var re = new RegExp('^[a-zA-Z0-9\-]+$');
+                if (!input.match(re)) {
+                    return 'The slug must be an alphanumeric string (hypens ' +
+                            'are also allowed).';
                 }
                 return true;
             }
