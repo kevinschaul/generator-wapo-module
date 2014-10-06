@@ -10,6 +10,18 @@ module.exports = function(grunt) {
     var cssFiles = ['src/<%= slug %>.css'];
 
     grunt.initConfig({
+        compress: {
+            dist: {
+                options: {
+                    archive: 'dist/TWP.Module.<%= slug %>.zip'
+                },
+                files: [{
+                    src: ['bower.json', 'package.json', distJSFile,
+                            distCSSFile],
+                    dest: '<%= slug %>'
+                }]
+            }
+        },
         mochaTest: {
             test: {
                 src: ['test/**/*.js']
@@ -34,12 +46,22 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-bower-concat');
     grunt.loadNpmTasks('grunt-mocha-test');
 
-    grunt.registerTask('default', ['test', 'bower_concat', 'uglify', 'cssmin']);
+    grunt.registerTask('default', ['build']);
+    grunt.registerTask('build', ['test', 'bower_concat', 'uglify',
+            'update_bower', 'cssmin', 'compress']);
     grunt.registerTask('test', ['mochaTest']);
-};
 
+    grunt.registerTask('update_bower', function() {
+        var bowerFile = 'bower.json';
+        var bowerJSON = grunt.file.readJSON(bowerFile);
+        bowerJSON.main = [distJSFile, distCSSFile];
+        bowerJSON.version = pkg.version;
+        grunt.file.write(bowerFile, JSON.stringify(bowerJSON, null, 2));
+    });
+};
